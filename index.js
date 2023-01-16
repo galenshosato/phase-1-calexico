@@ -16,7 +16,7 @@ fetch('http://localhost:3000/menu')
         })
 
         document.querySelector('#menu-items').append(menuItemSpan)
-    
+
     }))
     
 
@@ -34,3 +34,20 @@ function renderMenuItem(menuItem) {
     dishPrice.textContent = menuItem.price
 
 }
+
+// User enters amount of items in form field, click causes "Number in Cart: #" to change
+const cartForm = document.querySelector("#cart-form")
+cartForm.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const cartAmount = document.querySelector("#cart-amount")
+    let numberInCart = document.querySelector("#number-in-cart").innerText
+    let newCartAmount = parseInt(numberInCart) + parseInt(cartAmount.value)
+    
+    document.querySelector("#number-in-cart").innerText = newCartAmount
+
+    cartForm.reset()
+
+})
+
+
+
